@@ -19,6 +19,8 @@ namespace Snake_ConsoleGame
             // Esto es una prueba
             Marco marco = new Marco(60, 23);
             marco.Pintar();
+            Puntuacion puntuacion = new Puntuacion(50, 1);
+            puntuacion.Pintar();
 
 
             Console.ReadKey();
