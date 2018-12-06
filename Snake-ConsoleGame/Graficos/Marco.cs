@@ -28,7 +28,7 @@ namespace Snake_ConsoleGame.Graficos
                 Console.Write("#");
             }
 
-            for(int x = 0; x < base1; x++)
+            for(int x = 0; x <= base1; x++)
             {
                 Console.SetCursorPosition(x, 3);
                 Console.Write("#");
