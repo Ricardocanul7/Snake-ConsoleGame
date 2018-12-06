@@ -8,8 +8,8 @@ namespace Snake_ConsoleGame.Graficos
 {
     class Marco
     {
-        public int base1 { get; set; }
-        public int altura { get; set; }
+        public int base1 { get; }
+        public int altura { get; }
 
         public Marco(int base1, int altura)
         {
