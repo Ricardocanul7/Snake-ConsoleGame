@@ -10,8 +10,9 @@ namespace Snake_ConsoleGame
     {
         static void Main(string[] args)
         {
-            //Colaboradores
-            //Alan Alexis Moreno Martinez
+            // Colaboradores
+            // Alan Alexis Moreno Martinez
+            // Ricardo Antoni Canul Flota
         }
     }
 }
