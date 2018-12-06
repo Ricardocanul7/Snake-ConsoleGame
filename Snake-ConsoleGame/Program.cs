@@ -13,7 +13,7 @@ namespace Snake_ConsoleGame
         {
             // Colaboradores
             // Alan Alexis Moreno Martinez
-            // Ricardo Antoni Canul Flota
+            // Ricardo Antonio Canul Flota
 
 
             // Esto es una prueba
