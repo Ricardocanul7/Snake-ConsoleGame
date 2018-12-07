@@ -22,6 +22,8 @@ namespace Snake_ConsoleGame.Graficos
         // Opcion seleccionada 
         // 1 = Juego nuevo, 2 = Puntuaciones, 3 = Salir
         private int opcion;
+        // Menu activo o no
+        public bool EstaActivo { get; set; }
 
         public MenuPrincipal(int IzqX, int DerX, int SupY, int InfY)
         {
@@ -41,6 +43,9 @@ namespace Snake_ConsoleGame.Graficos
 
             // establecer opcion marcada por defecto 1 = Juego nuevo
             this.opcion = 1;
+
+            // Establecer menu como activo
+            this.EstaActivo = true;
         }
 
         // Metodo para recuperar la opcion seleccionada

@@ -24,28 +24,54 @@ namespace Snake_ConsoleGame
 
             do
             {
-                // Movimiento del cursor para seleccionar opciones
-                do
+                if(menu.EstaActivo)
                 {
-                    tecla = Console.ReadKey();
-                    if (tecla.Key == ConsoleKey.UpArrow)
+                    // Movimiento del cursor para seleccionar opciones
+                    do
                     {
-                        menu.CursorArriba();
-                    }
-                    else
-                    {
+                        tecla = Console.ReadKey();
+
+                        if (tecla.Key == ConsoleKey.UpArrow)
+                        {
+                            menu.CursorArriba();
+                        }
+
                         if (tecla.Key == ConsoleKey.DownArrow)
                         {
                             menu.CursorAbajo();
                         }
-                    }
-                    menu.Actualizar();
-                } while (tecla.Key != ConsoleKey.Enter);
+
+                        menu.Actualizar();
+                    } while (tecla.Key != ConsoleKey.Enter);
+                    // Al presionar Enter en el menu y seleccionar una opcion, el menú se pasa a inactivo
+                    menu.EstaActivo = false;
+                }
+
 
                 // Ejecutar opcion seleccionada
                 switch (menu.GetOpcion())
                 {
                     case 1: // JUEGO NUEVO
+                        Console.Clear(); // Se limpia la consola para mostrar la partida nueva del juego
+                        // Base = 75, Altura = 23
+                        Marco marco = new Marco(75, 23);
+                        marco.Pintar();
+                        Puntuacion puntos = new Puntuacion(2, 1);
+                        puntos.Pintar();
+                        Alimento alimento = new Alimento(marco);
+                        alimento.Pintar();
+
+
+                        tecla = Console.ReadKey();
+                        // Si se presiona ESQ en el teclado, se regresa al menu principal
+                        if (tecla.Key == ConsoleKey.Escape)
+                        {
+                            // Se limpia la pantalla del juego
+                            Console.Clear();
+                            // Se imprime nuevamente el menú en pantalla
+                            menu.EstaActivo = true;
+                            menu.Pintar();
+                        }
 
                         break;
                     case 2: // PUNTUACIONES
