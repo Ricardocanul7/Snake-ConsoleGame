@@ -72,15 +72,14 @@ namespace Snake_ConsoleGame.Graficos
         // Refrescar la pantalla si algun valor a cambiado
         public void Actualizar()
         {
+            // Limpiar pantalla anterior
+            Console.Clear();
+            // Volver a imprimir grafico
             this.Pintar();
         }
 
         public void CursorArriba()
         {
-            // Borrar cursor actual con 3 espacios en blanco
-            Console.SetCursorPosition(this.CursorX, this.CursorY);
-            Console.Write("   ");
-
             // si el cursor sube y se encuentra en la posicion 1, entonces baja a la ultima opcion automaticamente 3
             if(opcion == 1)
             {
@@ -99,10 +98,6 @@ namespace Snake_ConsoleGame.Graficos
 
         public void CursorAbajo()
         {
-            // Borrar cursor actual con 3 espacios en blanco
-            Console.SetCursorPosition(this.CursorX, this.CursorY);
-            Console.Write("   ");
-
             // Al bajar el cursor y no haber mas opciones, regresa a la opcion 1
             if(opcion == 3)
             {

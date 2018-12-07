@@ -32,10 +32,10 @@ namespace Snake_ConsoleGame.Graficos
         // Metodo para generar un nuevo alimento en coordenadas nuevas
         public void GenerarNuevo()
         {
-            int limiteIzqX = 1; // Limite 1 porque en 0 está impreso el muro del marco
-            int limiteDerX = this.marco.base1 - 1;  // Limite es uno menor que la base porque en la ultima coordenada está impresa el muro
+            int limiteIzqX = 1;     // Limite 1 porque en 0 está impreso el muro del marco
+            int limiteDerX = this.marco.base1;  // Limite es la base porque en la ultima coordenada está impresa el muro
             int limiteSupY = 4;     // Porque el marco comienza a partir de Y = 3 donde se pinta el muro superior
-            int limiteInfY = this.marco.altura - 1;
+            int limiteInfY = this.marco.altura;
 
             // Genero numeros aleatorios para X y Y dentro de un rango dentro de los muros del marco
             random = new Random();
@@ -54,6 +54,7 @@ namespace Snake_ConsoleGame.Graficos
         // para refrescar la posicion visual de la comida
         public void Actualizar()
         {
+            Console.Clear();
             this.Pintar();
         }
     }

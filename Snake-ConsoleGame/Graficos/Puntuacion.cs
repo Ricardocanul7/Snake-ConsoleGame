@@ -61,6 +61,7 @@ namespace Snake_ConsoleGame.Graficos
          * */
         public void Actualizar()
         {
+            Console.Clear();
             this.Pintar();
         }
     }

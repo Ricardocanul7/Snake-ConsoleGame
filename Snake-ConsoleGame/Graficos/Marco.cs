@@ -42,5 +42,11 @@ namespace Snake_ConsoleGame.Graficos
                 Console.Write("#");
             }
         }
+
+        public void Actualizar()
+        {
+            Console.Clear();
+            this.Pintar();
+        }
     }
 }

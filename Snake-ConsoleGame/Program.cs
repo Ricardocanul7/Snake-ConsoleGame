@@ -45,6 +45,7 @@ namespace Snake_ConsoleGame
                     } while (tecla.Key != ConsoleKey.Enter);
                     // Al presionar Enter en el menu y seleccionar una opcion, el menú se pasa a inactivo
                     menu.EstaActivo = false;
+                    Console.Clear(); // Se limpia la consola porque el menú está inactivo
                 }
 
 
@@ -52,7 +53,6 @@ namespace Snake_ConsoleGame
                 switch (menu.GetOpcion())
                 {
                     case 1: // JUEGO NUEVO
-                        Console.Clear(); // Se limpia la consola para mostrar la partida nueva del juego
                         // Base = 75, Altura = 23
                         Marco marco = new Marco(75, 23);
                         marco.Pintar();
