@@ -45,6 +45,7 @@
   <ItemGroup>
     <Compile Include="Graficos\Alimento.cs" />
     <Compile Include="Graficos\Marco.cs" />
+    <Compile Include="Graficos\MenuPrincipal.cs" />
     <Compile Include="Graficos\Puntuacion.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
