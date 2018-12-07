@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Snake_ConsoleGame.Graficos;
+using Snake_ConsoleGame.Logica;
 
 namespace Snake_ConsoleGame
 {
@@ -53,26 +54,7 @@ namespace Snake_ConsoleGame
                 switch (menu.GetOpcion())
                 {
                     case 1: // JUEGO NUEVO
-                        // Base = 75, Altura = 23
-                        Marco marco = new Marco(75, 23);
-                        marco.Pintar();
-                        Puntuacion puntos = new Puntuacion(2, 1);
-                        puntos.Pintar();
-                        Alimento alimento = new Alimento(marco);
-                        alimento.Pintar();
-
-
-                        tecla = Console.ReadKey();
-                        // Si se presiona ESQ en el teclado, se regresa al menu principal
-                        if (tecla.Key == ConsoleKey.Escape)
-                        {
-                            // Se limpia la pantalla del juego
-                            Console.Clear();
-                            // Se imprime nuevamente el menú en pantalla
-                            menu.EstaActivo = true;
-                            menu.Pintar();
-                        }
-
+                        Juego.JuegoNuevo(ref menu);
                         break;
                     case 2: // PUNTUACIONES
 
