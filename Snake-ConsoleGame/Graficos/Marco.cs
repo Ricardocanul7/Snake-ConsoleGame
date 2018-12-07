@@ -11,12 +11,17 @@ namespace Snake_ConsoleGame.Graficos
         public int base1 { get; }
         public int altura { get; }
 
+        /** 
+         * Constructor inicializa con datos de base y altura del rectangulo(Marco) que representan los muros
+         * que delimitaran el area donde podrá moverse la serpiente
+         * */
         public Marco(int base1, int altura)
         {
             this.base1 = base1;
             this.altura = altura;
         }
 
+        // Metodo para imprimir grafico en pantalla
         public void Pintar()
         {
             for (int y = 3; y < altura; y++)
