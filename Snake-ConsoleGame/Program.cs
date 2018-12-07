@@ -15,14 +15,13 @@ namespace Snake_ConsoleGame
             // Alan Alexis Moreno Martinez
             // Ricardo Antonio Canul Flota
 
-            int CoordX, CoordY;
             // Esto es una prueba
             Marco marco = new Marco(60, 23);
             marco.Pintar();
             Puntuacion puntuacion = new Puntuacion(50, 1);
             puntuacion.Pintar();
-            Alimento alimento = new Alimento();
-            alimento.PintarComida();
+            Alimento alimento = new Alimento(marco);
+            alimento.Pintar();
 
             Console.ReadKey();
         }
