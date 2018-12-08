@@ -48,6 +48,7 @@
     <Compile Include="Graficos\MenuPrincipal.cs" />
     <Compile Include="Graficos\Puntuacion.cs" />
     <Compile Include="Logica\Juego.cs" />
+    <Compile Include="Modelos\Jugador.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
