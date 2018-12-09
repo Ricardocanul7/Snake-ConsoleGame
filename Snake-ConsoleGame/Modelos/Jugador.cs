@@ -8,8 +8,9 @@ namespace Snake_ConsoleGame.Modelos
 {
     class Jugador
     {
+        public long Id { get; set; }
         public string Nombre { get; set; }
-        public int Puntuacion { get; set; }
+        public long Puntuacion { get; set; }
         public DateTime Fecha { get; set; }
 
         public Jugador()
@@ -17,8 +18,16 @@ namespace Snake_ConsoleGame.Modelos
 
         }
 
-        public Jugador(string nombre, int puntuacion, DateTime fecha)
+        public Jugador(string nombre, long puntuacion, DateTime fecha)
         {
+            this.Nombre = nombre;
+            this.Puntuacion = puntuacion;
+            this.Fecha = fecha;
+        }
+
+        public Jugador(long id, string nombre, long puntuacion, DateTime fecha)
+        {
+            this.Id = id;
             this.Nombre = nombre;
             this.Puntuacion = puntuacion;
             this.Fecha = fecha;
