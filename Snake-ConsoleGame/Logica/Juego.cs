@@ -1,4 +1,5 @@
-﻿using Snake_ConsoleGame.Graficos;
+﻿using Snake_ConsoleGame.Datos;
+using Snake_ConsoleGame.Graficos;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,10 +26,6 @@ namespace Snake_ConsoleGame.Logica
 
             // Leer algo del teclado
             tecla = Console.ReadKey();
-
-
-
-
 
 
             // Si se presiona ESQ en el teclado, se regresa al menu principal
