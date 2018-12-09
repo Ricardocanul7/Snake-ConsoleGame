@@ -65,6 +65,7 @@
     <Compile Include="Graficos\Alimento.cs" />
     <Compile Include="Graficos\Marco.cs" />
     <Compile Include="Graficos\MenuPrincipal.cs" />
+    <Compile Include="Graficos\PantallaPuntuaciones.cs" />
     <Compile Include="Graficos\Puntuacion.cs" />
     <Compile Include="Logica\Juego.cs" />
     <Compile Include="Modelos\Jugador.cs" />
