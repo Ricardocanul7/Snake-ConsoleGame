@@ -11,12 +11,12 @@ namespace Snake_ConsoleGame.Datos
     class ConexionSQLite
     {
         private string DatabasePath;
-        private string DatabaseName;
+        private string DatabaseTableName;
 
         public ConexionSQLite()
         {
             DatabasePath = "Puntuaciones.sqlite";
-            DatabaseName = "Puntuaciones";
+            DatabaseTableName = "Puntuaciones";
         }
 
         public void CrearTabla()
@@ -31,7 +31,7 @@ namespace Snake_ConsoleGame.Datos
                     SQLiteConnection conexion = new SQLiteConnection("Data Source=" + DatabasePath + ";Version=3;");
                     conexion.Open();
 
-                    string sql = "CREATE TABLE IF NOT EXISTS " + DatabaseName + "(id INTEGER PRIMARY KEY, " +
+                    string sql = "CREATE TABLE IF NOT EXISTS " + DatabaseTableName + "(id INTEGER PRIMARY KEY, " +
                                                                                 "nombre VARCHAR(60) NOT NULL, " +
                                                                                 "puntuacion INTEGER, " +
                                                                                 "fecha TEXT)";
@@ -58,7 +58,7 @@ namespace Snake_ConsoleGame.Datos
                 SQLiteConnection conexion = new SQLiteConnection("Data Source=" + DatabasePath + ";Version=3;");
                 conexion.Open();
 
-                string sql = "INSERT INTO " + DatabaseName + "(nombre, puntuacion, fecha)" +
+                string sql = "INSERT INTO " + DatabaseTableName + "(nombre, puntuacion, fecha)" +
                                                                "values(" +
                                                                "'" + jugador.Nombre + "'," +
                                                                jugador.Puntuacion + "," +
@@ -77,6 +77,44 @@ namespace Snake_ConsoleGame.Datos
                 Console.ReadKey();
             }
            
+        }
+
+        public List<Jugador> SelectAllJugadores()
+        {
+            List<Jugador> jugadores = new List<Jugador>();
+
+            try
+            {
+                SQLiteConnection conexion = new SQLiteConnection("Data Source=" + DatabasePath + ";Version=3;");
+                conexion.Open();
+
+                string sql = "SELECT id, nombre, fecha, puntuacion FROM " + DatabaseTableName + ";";
+
+                SQLiteCommand command = new SQLiteCommand(sql, conexion);
+                SQLiteDataReader result = command.ExecuteReader();
+
+                while (result.Read())
+                {
+                    long id = (long)result["id"];
+                    string nombre = (string)result["nombre"];
+                    long puntuacion = (long)result["puntuacion"];
+                    string fechaStr = (string)result["fecha"];
+                    DateTime fecha = DateTime.Parse(fechaStr);
+
+                    jugadores.Add(new Jugador(id, nombre, puntuacion, fecha));
+                }
+
+                conexion.Close();
+                command.Dispose();
+            }
+            catch (SQLiteException e)
+            {
+                Console.SetCursorPosition(1, 1);
+                Console.WriteLine("ERROR SELECT INTO - " + e.Message);
+                Console.ReadKey();
+            }
+
+            return jugadores;
         }
     }
 }
