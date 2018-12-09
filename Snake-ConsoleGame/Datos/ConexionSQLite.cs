@@ -17,8 +17,11 @@ namespace Snake_ConsoleGame.Datos
         {
             DatabasePath = "Puntuaciones.sqlite";
             DatabaseTableName = "Puntuaciones";
+            
+            this.CrearTabla();
         }
 
+        // Se crea archivo y tabla en caso de no existir
         public void CrearTabla()
         {
             try
