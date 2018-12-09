@@ -20,6 +20,8 @@ namespace Snake_ConsoleGame
             MenuPrincipal menu = new MenuPrincipal(0, 60, 0, 20);
             menu.Pintar();
 
+            Juego juego = new Juego(new Marco(75, 23));
+
             // Objeto para almacenar la tecla que se presione del teclado en cada momento
             ConsoleKeyInfo tecla;
 
@@ -54,10 +56,10 @@ namespace Snake_ConsoleGame
                 switch (menu.GetOpcion())
                 {
                     case 1: // JUEGO NUEVO
-                        Juego.JuegoNuevo(ref menu);
+                        juego.JuegoNuevo(ref menu);
                         break;
                     case 2: // PUNTUACIONES
-
+                        juego.Puntuaciones(ref menu);
                         break;
                     case 3: // SALIR
                         Console.SetCursorPosition(0, 23);
