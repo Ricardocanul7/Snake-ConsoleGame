@@ -61,7 +61,8 @@ namespace Snake_ConsoleGame.Graficos
          * */
         public void Actualizar()
         {
-            Console.Clear();
+            Console.SetCursorPosition(this.CoordX, this.CoordY);
+            Console.Write("               ");
             this.Pintar();
         }
     }
