@@ -8,8 +8,8 @@ Tambien se debe instalar el paquete NuGet System.Data.SQLite para poder usar la 
 
 Juego
 
-![Alt text](readme-media/MenuPrincipal.png?raw=true "Menu principal")
+![Screenshot](readme-media/MenuPrincipal.PNG)
 
-![Alt text](readme-media/Juego.png?raw=true "Juego")
+![Screenshot](readme-media/Juego.PNG)
 
-![Alt text](readme-media/Puntuaciones.png?raw=true "Puntuaciones")
+![Screenshot](readme-media/Puntuaciones.PNG)
