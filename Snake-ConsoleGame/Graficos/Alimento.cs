@@ -8,8 +8,8 @@ namespace Snake_ConsoleGame.Graficos
 {
     class Alimento
     {
-        private int CoordX;
-        private int CoordY;
+        public int CoordX { get; set; }
+        public int CoordY { get; set; }
         private Marco marco;
         private Random random;
 
@@ -50,11 +50,16 @@ namespace Snake_ConsoleGame.Graficos
             Console.Write("+");
         }
 
+        public void BorrarAlimento()
+        {
+            Console.SetCursorPosition(this.CoordX-1, this.CoordY);
+            Console.Write(" ");
+        }
+
         // Utilizar este metodo cuando se cambie algun valor en los atributos
         // para refrescar la posicion visual de la comida
         public void Actualizar()
         {
-            Console.Clear();
             this.Pintar();
         }
     }
