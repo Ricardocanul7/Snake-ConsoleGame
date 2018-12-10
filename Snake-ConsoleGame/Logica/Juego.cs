@@ -23,15 +23,57 @@ namespace Snake_ConsoleGame.Logica
         {
             // Variable para almacenar el valor de la ultima tecla presionada
             ConsoleKeyInfo tecla;
+
             Marco.Pintar();
             Puntuacion puntos = new Puntuacion(2, 1);
             puntos.Pintar();
             Alimento alimento = new Alimento(this.Marco);
             alimento.Pintar();
 
-            // Leer algo del teclado
-            tecla = Console.ReadKey();
+            Culebrita snake = new Culebrita(this.Marco);
+            snake.Pintar();
 
+            do{
+                tecla = Console.ReadKey();
+                // Si serpiente come alimento... Generar uno nuevo
+                if (snake.Comio(alimento))
+                {
+                    snake.Crecer();
+                    snake.HaCrecido = true;
+
+                    // Borra alimento actual en pantalla
+                    alimento.BorrarAlimento();
+                    // Aumentar puntos por comer
+                    puntos.AgregarPuntos();
+                    puntos.Actualizar();
+                    alimento = new Alimento(this.Marco);
+                    alimento.Actualizar();
+                }
+
+                if (tecla.Key == ConsoleKey.UpArrow && !snake.HaCrecido)
+                {
+                    snake.MoverArriba();
+                }
+                if(tecla.Key == ConsoleKey.RightArrow && !snake.HaCrecido)
+                {
+                    snake.MoverDerecha();
+                }
+                if (tecla.Key == ConsoleKey.LeftArrow && !snake.HaCrecido)
+                {
+                    snake.MoverIzquierda();
+                }
+                if (tecla.Key == ConsoleKey.DownArrow && !snake.HaCrecido)
+                {
+                    snake.MoverAbajo();
+                }
+
+                snake.Actualizar();
+                if (snake.HaCrecido)
+                {
+                    snake.HaCrecido = false;
+                }
+                
+            } while (snake.Colisiona() == false && tecla.Key != ConsoleKey.Escape) ;
 
             // Si se presiona ESQ en el teclado, se regresa al menu principal
             if (tecla.Key == ConsoleKey.Escape)
@@ -41,7 +83,7 @@ namespace Snake_ConsoleGame.Logica
                 // Se imprime nuevamente el menú en pantalla
                 menu.EstaActivo = true;
                 menu.Pintar();
-            }
+            } 
         }
 
         public void Puntuaciones(ref MenuPrincipal menu)
