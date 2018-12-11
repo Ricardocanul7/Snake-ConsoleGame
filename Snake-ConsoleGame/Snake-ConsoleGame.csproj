@@ -64,6 +64,7 @@
     <Compile Include="Datos\ConexionSQLite.cs" />
     <Compile Include="Graficos\Alimento.cs" />
     <Compile Include="Graficos\Culebrita.cs" />
+    <Compile Include="Graficos\GameOver.cs" />
     <Compile Include="Graficos\Marco.cs" />
     <Compile Include="Graficos\MenuPrincipal.cs" />
     <Compile Include="Graficos\PantallaPuntuaciones.cs" />

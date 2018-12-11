@@ -80,6 +80,9 @@ namespace Snake_ConsoleGame.Logica
                 if (!snake.EstaViva)
                 {
                     // EN CONSTRUCCION
+                    GameOver gameOver = new GameOver(this.Marco, puntos);
+                    gameOver.Pintar();
+                    Console.ReadKey();
                 }
                 // Se limpia la pantalla del juego
                 Console.Clear();
