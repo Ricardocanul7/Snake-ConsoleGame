@@ -39,7 +39,6 @@ namespace Snake_ConsoleGame.Logica
                 if (snake.Comio(alimento))
                 {
                     snake.Crecer();
-                    snake.HaCrecido = true;
 
                     // Borra alimento actual en pantalla
                     alimento.BorrarAlimento();
@@ -50,28 +49,24 @@ namespace Snake_ConsoleGame.Logica
                     alimento.Actualizar();
                 }
 
-                if (tecla.Key == ConsoleKey.UpArrow && !snake.HaCrecido)
+                if (tecla.Key == ConsoleKey.UpArrow)
                 {
                     snake.MoverArriba();
                 }
-                if(tecla.Key == ConsoleKey.RightArrow && !snake.HaCrecido)
+                if(tecla.Key == ConsoleKey.RightArrow)
                 {
                     snake.MoverDerecha();
                 }
-                if (tecla.Key == ConsoleKey.LeftArrow && !snake.HaCrecido)
+                if (tecla.Key == ConsoleKey.LeftArrow)
                 {
                     snake.MoverIzquierda();
                 }
-                if (tecla.Key == ConsoleKey.DownArrow && !snake.HaCrecido)
+                if (tecla.Key == ConsoleKey.DownArrow)
                 {
                     snake.MoverAbajo();
                 }
 
                 snake.Actualizar();
-                if (snake.HaCrecido)
-                {
-                    snake.HaCrecido = false;
-                }
                 
             } while (snake.Colisiona() == false && tecla.Key != ConsoleKey.Escape) ;
 
