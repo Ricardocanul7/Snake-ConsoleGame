@@ -52,6 +52,7 @@ namespace Snake_ConsoleGame.Graficos
                 Console.Write(parte);
                 //Console.Write(Snake.Count);
             }
+            this.SnakeBefore = this.Snake.ToList();
         }
 
         public void Actualizar()
