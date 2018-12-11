@@ -79,7 +79,6 @@ namespace Snake_ConsoleGame.Logica
                  * entonces pedir datos para guardar su nombre y puntuacion */
                 if (!snake.EstaViva)
                 {
-                    // EN CONSTRUCCION
                     GameOver gameOver = new GameOver(this.Marco, puntos);
                     gameOver.Pintar();
                     Console.ReadKey();
