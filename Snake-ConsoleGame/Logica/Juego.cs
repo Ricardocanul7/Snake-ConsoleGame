@@ -70,9 +70,17 @@ namespace Snake_ConsoleGame.Logica
                 
             } while (snake.Colisiona() == false && tecla.Key != ConsoleKey.Escape) ;
 
-            // Si se presiona ESQ en el teclado, se regresa al menu principal
-            if (tecla.Key == ConsoleKey.Escape)
+            /** Si se presiona ESQ en el teclado, 
+             *  o la culebrita está muerta
+             *  se regresa al menu principal */
+            if (tecla.Key == ConsoleKey.Escape || snake.EstaViva == false)
             {
+                /** Solo si la serpiente está muerta, 
+                 * entonces pedir datos para guardar su nombre y puntuacion */
+                if (!snake.EstaViva)
+                {
+                    // EN CONSTRUCCION
+                }
                 // Se limpia la pantalla del juego
                 Console.Clear();
                 // Se imprime nuevamente el menú en pantalla

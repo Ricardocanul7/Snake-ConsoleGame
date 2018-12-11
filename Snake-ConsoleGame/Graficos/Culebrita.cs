@@ -278,6 +278,7 @@ namespace Snake_ConsoleGame.Graficos
             // Validacion si choca con el muro
             if(Cabeza.X <= 0 || Cabeza.X > Marco.base1 || Cabeza.Y <= 3 || Cabeza.Y > Marco.altura)
             {
+                this.EstaViva = false;
                 return true;
             }
             else
@@ -285,6 +286,7 @@ namespace Snake_ConsoleGame.Graficos
                 // Validacion si choca con ella misma
                 if (this.SelfColision())
                 {
+                    this.EstaViva = false;
                     return true;
                 }
                 else
