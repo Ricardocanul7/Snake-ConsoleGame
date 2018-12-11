@@ -14,7 +14,7 @@ namespace Snake_ConsoleGame.Graficos
         private List<ParteDeCulebrita> Snake;
         private List<ParteDeCulebrita> SnakeBefore;
         private Marco Marco;
-        public bool HaCrecido { get; set; }
+        public bool EstaViva { get; set; }
 
         public Culebrita(Marco marco)
         {
@@ -30,6 +30,8 @@ namespace Snake_ConsoleGame.Graficos
             this.Snake.Add(Cabeza);        // Se agrega la cabeza al cuerpo de la serpiente
             this.Snake.Add(Cola);          // Se agrega la cola al cuerpo de la serpiente
             this.SnakeBefore = new List<ParteDeCulebrita>();
+
+            this.EstaViva = true;
         }
 
         public ParteDeCulebrita PuntoCentral()
@@ -50,6 +52,7 @@ namespace Snake_ConsoleGame.Graficos
                 Console.Write(parte);
                 //Console.Write(Snake.Count);
             }
+            this.SnakeBefore = this.Snake.ToList();
         }
 
         public void Actualizar()
@@ -273,14 +276,46 @@ namespace Snake_ConsoleGame.Graficos
 
         public bool Colisiona()
         {
+            // Validacion si choca con el muro
             if(Cabeza.X <= 0 || Cabeza.X > Marco.base1 || Cabeza.Y <= 3 || Cabeza.Y > Marco.altura)
             {
+                this.EstaViva = false;
                 return true;
             }
             else
             {
-                return false;
+                // Validacion si choca con ella misma
+                if (this.SelfColision())
+                {
+                    this.EstaViva = false;
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
             }
+        }
+
+        private bool SelfColision()
+        {
+            // Cabeza
+            ParteDeCulebrita parte = this.Snake[0];
+            ParteDeCulebrita parteComparar;
+
+            for(int i = 1; i < this.Snake.Count; i++)
+            {
+                parteComparar = this.Snake[i];
+                /** Verificar si la cabeza tiene la misma coordenada
+                 ** que alguna parte de su cuerpo para determinar si ha colisionado */
+                if (parte.X == parteComparar.X && parte.Y == parteComparar.Y)
+                {
+                    return true;
+                }
+            }
+
+            // Si no detecta coliciones de alguna parte del cuerpo con la cabeza, devuelve falso
+            return false;
         }
     }
 }

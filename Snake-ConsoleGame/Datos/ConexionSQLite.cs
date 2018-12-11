@@ -119,5 +119,28 @@ namespace Snake_ConsoleGame.Datos
 
             return jugadores;
         }
+
+        public void DeleteAllJugadores()
+        {
+            try
+            {
+                SQLiteConnection conexion = new SQLiteConnection("Data Source=" + DatabasePath + ";Version=3;");
+                conexion.Open();
+
+                string sql = "DELETE FROM " + DatabaseTableName + ";";
+
+                SQLiteCommand command = new SQLiteCommand(sql, conexion);
+                command.ExecuteNonQuery();
+
+                conexion.Close();
+                command.Dispose();
+            }
+            catch (SQLiteException e)
+            {
+                Console.SetCursorPosition(1, 1);
+                Console.WriteLine("ERROR DELETE TABLE - " + e.Message);
+                Console.ReadKey();
+            }
+        }
     }
 }

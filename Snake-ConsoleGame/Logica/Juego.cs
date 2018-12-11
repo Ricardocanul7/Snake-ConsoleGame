@@ -39,7 +39,6 @@ namespace Snake_ConsoleGame.Logica
                 if (snake.Comio(alimento))
                 {
                     snake.Crecer();
-                    snake.HaCrecido = true;
 
                     // Borra alimento actual en pantalla
                     alimento.BorrarAlimento();
@@ -50,34 +49,40 @@ namespace Snake_ConsoleGame.Logica
                     alimento.Actualizar();
                 }
 
-                if (tecla.Key == ConsoleKey.UpArrow && !snake.HaCrecido)
+                if (tecla.Key == ConsoleKey.UpArrow)
                 {
                     snake.MoverArriba();
                 }
-                if(tecla.Key == ConsoleKey.RightArrow && !snake.HaCrecido)
+                if(tecla.Key == ConsoleKey.RightArrow)
                 {
                     snake.MoverDerecha();
                 }
-                if (tecla.Key == ConsoleKey.LeftArrow && !snake.HaCrecido)
+                if (tecla.Key == ConsoleKey.LeftArrow)
                 {
                     snake.MoverIzquierda();
                 }
-                if (tecla.Key == ConsoleKey.DownArrow && !snake.HaCrecido)
+                if (tecla.Key == ConsoleKey.DownArrow)
                 {
                     snake.MoverAbajo();
                 }
 
                 snake.Actualizar();
-                if (snake.HaCrecido)
-                {
-                    snake.HaCrecido = false;
-                }
                 
             } while (snake.Colisiona() == false && tecla.Key != ConsoleKey.Escape) ;
 
-            // Si se presiona ESQ en el teclado, se regresa al menu principal
-            if (tecla.Key == ConsoleKey.Escape)
+            /** Si se presiona ESQ en el teclado, 
+             *  o la culebrita está muerta
+             *  se regresa al menu principal */
+            if (tecla.Key == ConsoleKey.Escape || snake.EstaViva == false)
             {
+                /** Solo si la serpiente está muerta, 
+                 * entonces pedir datos para guardar su nombre y puntuacion */
+                if (!snake.EstaViva)
+                {
+                    GameOver gameOver = new GameOver(this.Marco, puntos);
+                    gameOver.Pintar();
+                    Console.ReadKey();
+                }
                 // Se limpia la pantalla del juego
                 Console.Clear();
                 // Se imprime nuevamente el menú en pantalla
