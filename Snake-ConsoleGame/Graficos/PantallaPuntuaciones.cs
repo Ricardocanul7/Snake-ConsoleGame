@@ -2,6 +2,7 @@
 using Snake_ConsoleGame.Modelos;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,12 +13,13 @@ namespace Snake_ConsoleGame.Graficos
     {
         private Marco Marco;
         private List<Jugador> Jugadores;
+        ConexionSQLite db_jugadores;
 
         public PantallaPuntuaciones(Marco marco)
         {
             this.Marco = marco;
 
-            ConexionSQLite db_jugadores = new ConexionSQLite();
+            db_jugadores = new ConexionSQLite();
             Jugadores = db_jugadores.SelectAllJugadores();
             this.OrdenarListaJugadores();
         }
@@ -43,14 +45,16 @@ namespace Snake_ConsoleGame.Graficos
             Console.Write("Fecha");
             y += 2;
 
+            Jugadores = db_jugadores.SelectAllJugadores();
+            this.OrdenarListaJugadores();
             // Informacion de cada columna
             foreach (var jugador in Jugadores)
             {
                 // No imprimir mas Jugadores de lo que elmarco permite.
                 // Solo se muestran los mejores jugadores dependiendo su puntuacion
                 // La lista ya ha sido ordenada previamente con el metodo OrdenarListaJugadores()
-
-                if(contJugadores <= Marco.altura)
+                
+                if(contJugadores < (Marco.altura-5)) // se deja unos espacios para poner opciones abajo
                 {
                     Console.SetCursorPosition(x, y);
                     Console.Write(jugador.Nombre);
@@ -64,7 +68,19 @@ namespace Snake_ConsoleGame.Graficos
                     Console.Write(jugador.Fecha);
                     y++;
                 }
+                contJugadores++;
             }
+
+            Console.SetCursorPosition(x * 2, Marco.altura-2);
+            Console.Write("Regresar - Esc");
+            Console.SetCursorPosition(x * 4, Marco.altura - 2);
+            Console.Write("Borrar todo - Supr");
+        }
+
+        public void Actualizar()
+        {
+            Console.Clear();
+            this.Pintar();
         }
 
         // Ordena lista de jugadores del Mayor al Menor
@@ -87,6 +103,12 @@ namespace Snake_ConsoleGame.Graficos
                     }
                 }
             }
+        }
+
+        public void BorrarTodosJugadores()
+        {
+            ConexionSQLite datos = new ConexionSQLite();
+            datos.DeleteAllJugadores();
         }
     }
 }

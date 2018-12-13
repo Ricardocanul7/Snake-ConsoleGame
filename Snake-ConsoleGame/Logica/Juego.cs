@@ -109,6 +109,12 @@ namespace Snake_ConsoleGame.Logica
                 menu.EstaActivo = true;
                 menu.Pintar();
             }
+
+            if(tecla.Key == ConsoleKey.Delete)
+            {
+                puntuaciones.BorrarTodosJugadores();
+                puntuaciones.Actualizar();
+            }
         }
     }
 }
