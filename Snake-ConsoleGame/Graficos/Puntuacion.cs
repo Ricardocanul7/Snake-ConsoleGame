@@ -39,7 +39,7 @@ namespace Snake_ConsoleGame.Graficos
         **/
         public void AgregarPuntos()
         {
-            this.Puntos++;
+            this.Puntos += 100;
         }
 
         
