@@ -48,17 +48,12 @@ namespace Snake_ConsoleGame.Graficos
             return this.Puntos;
         }
 
-        // Metodo para imprimir la puntuacion en la consola
         public void Pintar()
         {
             Console.SetCursorPosition(this.CoordX, this.CoordY);
             Console.WriteLine("Puntos: " + this.Puntos);
         }
 
-        /**
-         * Metodo para actualizar el grafico en pantalla,
-         * y se muestre la puntuacion actualizada o cualquier elemento que haya cambiado
-         * */
         public void Actualizar()
         {
             Console.SetCursorPosition(this.CoordX, this.CoordY);

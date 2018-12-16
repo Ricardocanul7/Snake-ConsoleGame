@@ -21,7 +21,6 @@ namespace Snake_ConsoleGame.Graficos
             this.altura = altura;
         }
 
-        // Metodo para imprimir grafico en pantalla
         public void Pintar()
         {
             for (int y = 3; y < altura; y++)

@@ -21,16 +21,18 @@ namespace Snake_ConsoleGame.Graficos
         {
             this.Marco = marco;
             this.Cabeza = PuntoCentral();  // Para que la cabeza de la serpiente aparezca en el centro de la pantalla
-            this.Cabeza.Simbolo = '@';     // Representa la cabeza de la serpiente
+            this.Cabeza.Simbolo = '@';
 
             this.Cola = PuntoCentral();
             this.Cola.X--;                 // La cola tiene que estar detras de la cabeza en la coordenada X
-            this.Cola.Simbolo = '*';       // Simbolo que representa la cola
+            this.Cola.Simbolo = '*';
 
-            this.Snake = new List<ParteDeCulebrita>();  // Inicializa el cuerpo de la serpiente en una lista
-            this.Snake.Add(Cabeza);        // Se agrega la cabeza al cuerpo de la serpiente
-            this.Snake.Add(Cola);          // Se agrega la cola al cuerpo de la serpiente
-            this.SnakeBefore = new List<ParteDeCulebrita>();
+            this.Snake = new List<ParteDeCulebrita>();
+            this.Snake.Add(Cabeza);
+            this.Snake.Add(Cola);
+
+            // copia temp de serpiente en el frame anterior
+            this.SnakeBefore = new List<ParteDeCulebrita>();    
 
             this.EstaViva = true;
             this.Velocidad = 20;
@@ -52,7 +54,6 @@ namespace Snake_ConsoleGame.Graficos
             {
                 Console.SetCursorPosition(parte.X, parte.Y);
                 Console.Write(parte);
-                //Console.Write(Snake.Count);
             }
             this.SnakeBefore = this.Snake.ToList();
         }
@@ -60,25 +61,20 @@ namespace Snake_ConsoleGame.Graficos
         public void Actualizar()
         {
             this.BorrarColaAnterior(); 
-            // Imprimir Snake en el frame actual
             this.Pintar();
         }
 
         public void MoverArriba()
         {
             // copiar toda la culebrita antes de moverla
-            //this.SnakeBefore.Clear();
             this.SnakeBefore = this.copiarCulebrita(this.Snake);
             List<ParteDeCulebrita> cuerpoTemp = this.copiarCulebrita(this.Snake);
 
-            // Se limpia la lista
             this.Snake.Clear();
             ParteDeCulebrita apuntadorCabeza = this.Cabeza;
-            // Se crea una cabeza temporal que no apunte hacia la cabeza actual
             ParteDeCulebrita cabezaNueva = new ParteDeCulebrita(apuntadorCabeza.X, apuntadorCabeza.Y, apuntadorCabeza.Simbolo);
             // Se cambia su coordenada en Y para subirla un espacio
-            cabezaNueva.Y--;                 // Al restar una coordenada en Y la cabeza subira en la pantalla un espacio
-            // Teniendo la lista limpia se agrega una nueva cabeza en una posicion arriba
+            cabezaNueva.Y--;
             this.Snake.Add(cabezaNueva);
 
             // Se recorre la lista que contiene el apuntador a la cabeza, y a la cola
@@ -90,7 +86,6 @@ namespace Snake_ConsoleGame.Graficos
                     parte = cuerpoTemp[i];
                     this.Snake.Add(new ParteDeCulebrita(parte.X, parte.Y, '*'));
                     // Se elimina la cola en la ultima posicion
-                    // El apuntador necesita cambiarse a ultima posicion al terminar el ciclo
                     cuerpoTemp.RemoveAt(i + 1);
                 }
                 else
@@ -109,18 +104,14 @@ namespace Snake_ConsoleGame.Graficos
         public void MoverDerecha()
         {
             // copiar toda la culebrita antes de moverla
-            //this.SnakeBefore.Clear();
             this.SnakeBefore = this.copiarCulebrita(this.Snake);
             List<ParteDeCulebrita> cuerpoTemp = this.copiarCulebrita(this.Snake);
 
-            // Se limpia la lista
             this.Snake.Clear();
             ParteDeCulebrita apuntadorCabeza = this.Cabeza;
-            // Se crea una cabeza temporal que no apunte hacia la cabeza actual
             ParteDeCulebrita cabezaNueva = new ParteDeCulebrita(apuntadorCabeza.X, apuntadorCabeza.Y, apuntadorCabeza.Simbolo);
             // Se cambia su coordenada en Y para subirla un espacio
-            cabezaNueva.X++;                 
-            // Teniendo la lista limpia se agrega una nueva cabeza en una posicion arriba
+            cabezaNueva.X++;
             this.Snake.Add(cabezaNueva);
 
             // Se recorre la lista que contiene el apuntador a la cabeza, y a la cola
@@ -132,7 +123,6 @@ namespace Snake_ConsoleGame.Graficos
                     parte = cuerpoTemp[i];
                     this.Snake.Add(new ParteDeCulebrita(parte.X, parte.Y, '*'));
                     // Se elimina la cola en la ultima posicion
-                    // El apuntador necesita cambiarse a ultima posicion al terminar el ciclo
                     cuerpoTemp.RemoveAt(i + 1);
                 }
                 else
@@ -151,18 +141,14 @@ namespace Snake_ConsoleGame.Graficos
         public void MoverIzquierda()
         {
             // copiar toda la culebrita antes de moverla
-            //this.SnakeBefore.Clear();
             this.SnakeBefore = this.copiarCulebrita(this.Snake);
             List<ParteDeCulebrita> cuerpoTemp = this.copiarCulebrita(this.Snake);
 
-            // Se limpia la lista
             this.Snake.Clear();
             ParteDeCulebrita apuntadorCabeza = this.Cabeza;
-            // Se crea una cabeza temporal que no apunte hacia la cabeza actual
             ParteDeCulebrita cabezaNueva = new ParteDeCulebrita(apuntadorCabeza.X, apuntadorCabeza.Y, apuntadorCabeza.Simbolo);
             // Se cambia su coordenada en Y para subirla un espacio
             cabezaNueva.X--;                 
-            // Teniendo la lista limpia se agrega una nueva cabeza en una posicion arriba
             this.Snake.Add(cabezaNueva);
 
             // Se recorre la lista que contiene el apuntador a la cabeza, y a la cola
@@ -174,7 +160,6 @@ namespace Snake_ConsoleGame.Graficos
                     parte = cuerpoTemp[i];
                     this.Snake.Add(new ParteDeCulebrita(parte.X, parte.Y, '*'));
                     // Se elimina la cola en la ultima posicion
-                    // El apuntador necesita cambiarse a ultima posicion al terminar el ciclo
                     cuerpoTemp.RemoveAt(i + 1);
                 }
                 else
@@ -193,18 +178,14 @@ namespace Snake_ConsoleGame.Graficos
         public void MoverAbajo()
         {
             // copiar toda la culebrita antes de moverla
-            //this.SnakeBefore.Clear();
             this.SnakeBefore = this.copiarCulebrita(this.Snake);
             List<ParteDeCulebrita> cuerpoTemp = this.copiarCulebrita(this.Snake);
 
-            // Se limpia la lista
             this.Snake.Clear();
             ParteDeCulebrita apuntadorCabeza = this.Cabeza;
-            // Se crea una cabeza temporal que no apunte hacia la cabeza actual
             ParteDeCulebrita cabezaNueva = new ParteDeCulebrita(apuntadorCabeza.X, apuntadorCabeza.Y, apuntadorCabeza.Simbolo);
             // Se cambia su coordenada en Y para subirla un espacio
             cabezaNueva.Y++;
-            // Teniendo la lista limpia se agrega una nueva cabeza en una posicion arriba
             this.Snake.Add(cabezaNueva);
 
             // Se recorre la lista que contiene el apuntador a la cabeza, y a la cola
@@ -216,7 +197,6 @@ namespace Snake_ConsoleGame.Graficos
                     parte = cuerpoTemp[i];
                     this.Snake.Add(new ParteDeCulebrita(parte.X, parte.Y, '*'));
                     // Se elimina la cola en la ultima posicion
-                    // El apuntador necesita cambiarse a ultima posicion al terminar el ciclo
                     cuerpoTemp.RemoveAt(i + 1);
                 }
                 else
@@ -306,14 +286,12 @@ namespace Snake_ConsoleGame.Graficos
                     return true;
                 }
             }
-
             // Si no detecta coliciones de alguna parte del cuerpo con la cabeza, devuelve falso
             return false;
         }
 
         private void BorrarColaAnterior()
         {
-            // Devolver la cola de la culebrita en el del momento anterior para borrarlo del buffer de la pantalla
             ParteDeCulebrita colaAnterior = SnakeBefore[SnakeBefore.Count - 1];
 
             Console.SetCursorPosition(colaAnterior.X, colaAnterior.Y);

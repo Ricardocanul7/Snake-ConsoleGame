@@ -54,7 +54,6 @@ namespace Snake_ConsoleGame.Graficos
             return this.opcion;
         }
 
-        // Imprimir en pantalla el menu
         public void Pintar()
         {
             // Mostrar opciones
@@ -72,9 +71,7 @@ namespace Snake_ConsoleGame.Graficos
         // Refrescar la pantalla si algun valor a cambiado
         public void Actualizar()
         {
-            // Limpiar pantalla anterior
             Console.Clear();
-            // Volver a imprimir grafico
             this.Pintar();
         }
 
@@ -89,9 +86,7 @@ namespace Snake_ConsoleGame.Graficos
             {
                 // En caso que sea otro numero como 3 o 2, solo tiene que retroceder atras un numero
                 opcion--;
-                
             }
-
             // La coordenada del cursor cambiará a la opcion seleccionada
             this.CursorY = this.divisionY * opcion;
         }

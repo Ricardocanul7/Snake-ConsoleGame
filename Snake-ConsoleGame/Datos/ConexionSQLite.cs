@@ -106,7 +106,6 @@ namespace Snake_ConsoleGame.Datos
 
                     jugadores.Add(new Jugador(id, nombre, puntuacion, fecha));
                 }
-
                 conexion.Close();
                 command.Dispose();
             }
@@ -116,7 +115,6 @@ namespace Snake_ConsoleGame.Datos
                 Console.WriteLine("ERROR SELECT INTO - " + e.Message);
                 Console.ReadKey();
             }
-
             return jugadores;
         }
 

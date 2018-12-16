@@ -22,7 +22,6 @@ namespace Snake_ConsoleGame.Logica
 
         public void JuegoNuevo(ref MenuPrincipal menu)
         {
-            // Variable para almacenar el valor de la ultima tecla presionada
             ConsoleKeyInfo tecla;
 
             Marco.Pintar();
@@ -56,20 +55,15 @@ namespace Snake_ConsoleGame.Logica
                     }
                 }
 
-                
-
-
                 // Si serpiente come alimento... Generar uno nuevo
                 if (snake.Comio(alimento))
                 {
                     snake.Crecer();
                     snake.Velocidad+=20;
-                    // Borra alimento actual en pantalla
                     alimento.BorrarAlimento();
-                    // Aumentar puntos por comer
                     puntos.AgregarPuntos();
                     puntos.Actualizar();
-                    alimento = new Alimento(this.Marco);
+                    alimento.GenerarNuevo();
                     alimento.Actualizar();
                 }
 
@@ -98,15 +92,12 @@ namespace Snake_ConsoleGame.Logica
              *  se regresa al menu principal */
             if (tecla.Key == ConsoleKey.Escape || snake.EstaViva == false)
             {
-                /** Solo si la serpiente está muerta, 
-                 * entonces pedir datos para guardar su nombre y puntuacion */
                 if (!snake.EstaViva)
                 {
                     GameOver gameOver = new GameOver(this.Marco, puntos);
                     gameOver.Pintar();
                     Console.ReadKey();
                 }
-                // Se limpia la pantalla del juego
                 Console.Clear();
                 // Se imprime nuevamente el menú en pantalla
                 menu.EstaActivo = true;

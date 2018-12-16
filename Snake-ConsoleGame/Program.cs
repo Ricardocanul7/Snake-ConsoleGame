@@ -12,17 +12,14 @@ namespace Snake_ConsoleGame
     {
         static void Main(string[] args)
         {
-            // Colaboradores
-            // Alan Alexis Moreno Martinez
+            // Autor
             // Ricardo Antonio Canul Flota
 
-            // 
             MenuPrincipal menu = new MenuPrincipal(0, 60, 0, 20);
             menu.Pintar();
 
             Juego juego = new Juego(new Marco(75, 23));
 
-            // Objeto para almacenar la tecla que se presione del teclado en cada momento
             ConsoleKeyInfo tecla;
 
             do
@@ -70,9 +67,6 @@ namespace Snake_ConsoleGame
                         break;
                 }
             } while (menu.GetOpcion() != 3); // Si opcion es 3 entonces se ha seleccionado salir del programa
-            // FIN
-
-
 
             Console.ReadKey();
         }
