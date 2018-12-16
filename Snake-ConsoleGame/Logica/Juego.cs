@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Snake_ConsoleGame.Logica
@@ -33,13 +34,36 @@ namespace Snake_ConsoleGame.Logica
             Culebrita snake = new Culebrita(this.Marco);
             snake.Pintar();
 
+            tecla = new ConsoleKeyInfo((char)39, ConsoleKey.RightArrow, false, false, false);
             do{
-                tecla = Console.ReadKey();
+                Console.SetCursorPosition(60, 1);
+                Console.Write("Velocidad: " + snake.Velocidad);
+
+                if(300 - snake.Velocidad > 0)
+                {
+                    Thread.Sleep(300 - snake.Velocidad);
+                    if (Console.KeyAvailable)
+                    {
+                        tecla = Console.ReadKey(true);
+                    }
+                }
+                else
+                {
+                    Thread.Sleep(0);
+                    if (Console.KeyAvailable)
+                    {
+                        tecla = Console.ReadKey(true);
+                    }
+                }
+
+                
+
+
                 // Si serpiente come alimento... Generar uno nuevo
                 if (snake.Comio(alimento))
                 {
                     snake.Crecer();
-
+                    snake.Velocidad+=20;
                     // Borra alimento actual en pantalla
                     alimento.BorrarAlimento();
                     // Aumentar puntos por comer
@@ -67,7 +91,6 @@ namespace Snake_ConsoleGame.Logica
                 }
 
                 snake.Actualizar();
-                
             } while (snake.Colisiona() == false && tecla.Key != ConsoleKey.Escape) ;
 
             /** Si se presiona ESQ en el teclado, 
