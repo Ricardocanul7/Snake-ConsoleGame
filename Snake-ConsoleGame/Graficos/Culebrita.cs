@@ -15,6 +15,7 @@ namespace Snake_ConsoleGame.Graficos
         private List<ParteDeCulebrita> SnakeBefore;
         private Marco Marco;
         public bool EstaViva { get; set; }
+        public int Velocidad { get; set; }
 
         public Culebrita(Marco marco)
         {
@@ -32,6 +33,7 @@ namespace Snake_ConsoleGame.Graficos
             this.SnakeBefore = new List<ParteDeCulebrita>();
 
             this.EstaViva = true;
+            this.Velocidad = 1;
         }
 
         public ParteDeCulebrita PuntoCentral()
