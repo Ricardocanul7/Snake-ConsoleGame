@@ -270,7 +270,7 @@ namespace Snake_ConsoleGame.Graficos
         public bool Colisiona()
         {
             // Validacion si choca con el muro
-            if(Cabeza.X <= 0 || Cabeza.X > Marco.base1 || Cabeza.Y <= 3 || Cabeza.Y > Marco.altura)
+            if(Cabeza.X <= 0 || Cabeza.X > Marco.base1 - 1 || Cabeza.Y <= 3 || Cabeza.Y > Marco.altura - 1)
             {
                 this.EstaViva = false;
                 return true;
