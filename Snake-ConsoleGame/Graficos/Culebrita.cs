@@ -59,16 +59,7 @@ namespace Snake_ConsoleGame.Graficos
 
         public void Actualizar()
         {
-            // Devolver la cola de la culebrita en el del momento anterior para borrarlo del buffer de la pantalla
-            ParteDeCulebrita colaAnterior = SnakeBefore[SnakeBefore.Count - 1];
-
-            Console.SetCursorPosition(colaAnterior.X, colaAnterior.Y-1);
-            Console.WriteLine(" ");
-            Console.SetCursorPosition(colaAnterior.X - 1, colaAnterior.Y);
-            Console.WriteLine("   ");
-            Console.SetCursorPosition(colaAnterior.X, colaAnterior.Y + 1);
-            Console.WriteLine(" ");
-
+            this.BorrarColaAnterior();
             // Imprimir Snake en el frame actual
             this.Pintar();
         }
@@ -318,6 +309,19 @@ namespace Snake_ConsoleGame.Graficos
 
             // Si no detecta coliciones de alguna parte del cuerpo con la cabeza, devuelve falso
             return false;
+        }
+
+        private void BorrarColaAnterior()
+        {
+            // Devolver la cola de la culebrita en el del momento anterior para borrarlo del buffer de la pantalla
+            ParteDeCulebrita colaAnterior = SnakeBefore[SnakeBefore.Count - 1];
+
+            Console.SetCursorPosition(colaAnterior.X, colaAnterior.Y - 1);
+            Console.WriteLine(" ");
+            Console.SetCursorPosition(colaAnterior.X - 1, colaAnterior.Y);
+            Console.WriteLine("   ");
+            Console.SetCursorPosition(colaAnterior.X, colaAnterior.Y + 1);
+            Console.WriteLine(" ");
         }
     }
 }
