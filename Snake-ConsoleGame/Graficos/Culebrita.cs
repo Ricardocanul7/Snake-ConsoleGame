@@ -33,7 +33,7 @@ namespace Snake_ConsoleGame.Graficos
             this.SnakeBefore = new List<ParteDeCulebrita>();
 
             this.EstaViva = true;
-            this.Velocidad = 1;
+            this.Velocidad = 20;
         }
 
         public ParteDeCulebrita PuntoCentral()
